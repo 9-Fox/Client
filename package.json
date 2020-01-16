@@ -1,0 +1,29 @@
+{
+  "name": "Client",
+  "version": "1.0.0",
+  "description": "Client side",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.2.2",
+    "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
+    "vue-sweetalert2": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9-Fox/Client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/9-Fox/Client/issues"
+  },
+  "homepage": "https://github.com/9-Fox/Client#readme"
+}
