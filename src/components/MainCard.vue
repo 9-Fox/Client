@@ -1,24 +1,25 @@
 <template>
-  <div class="m-2" v-on:click="selectPost">
-      <h3>{{data.title}}</h3>
+  <div class="m-2">
+    <h3>{{data.title}}</h3>
     <b-card
       overlay
       :img-src="data.image"
       img-alt="Card Image"
       text-variant="white"
+      v-on:click="selectPost"
     ></b-card>
-    <p>{{data.likes}} Like</p>
-    <span class="spanduk h1 mb-2 ">
+    <p>{{data.likes.length}} Like</p>
+    <span class="spanduk h1 mb-2">
       <b-icon icon="heart-fill" variant="danger"></b-icon>
     </span>
     <span class="spanduk h1 mb-2">
       <b-icon icon="heart" variant="dark"></b-icon>
     </span>
     <span class="spanduk h1 mb-2">
-      <b-icon icon="chat" variant="dark"></b-icon>
+      <b-icon icon="chat" variant="dark" v-on:click="selectPost"></b-icon>
     </span>
     <span class="spanduk h1 mb-2">
-      <b-icon icon="cursor" variant="dark"></b-icon>
+      <b-icon icon="cursor" variant="dark" @click="shareFB"></b-icon>
     </span>
     <Comment :data="postdata"></Comment>
   </div>
@@ -27,24 +28,32 @@
 <script>
 export default {
   name: "MainCard",
-  props: ['data'],
+  props: ["data"],
   data() {
-    return {
-    };
+    return {};
   },
-  created(){
-    console.log(this.data)
+  created() {
+    console.log(this.data);
   },
   methods: {
-      selectPost(){
-        this.$emit('selectedPost', this.data._id)
-      },
-      sending(){
-          this.$emit('send-sample', this.sample)
-          console.log(this.sample)
-      }
+    selectPost() {
+      this.$emit("selectedPost", this.data._id);
+    },
+    sending() {
+      this.$emit("send-sample", this.sample);
+      console.log(this.sample);
+    },
+    shareFB() {
+      FB.ui(
+        {
+          method: "share",
+          href: this.data.image
+        },
+        function(response) {}
+      );
+    }
   },
-  props:['data']
+  props: ["data"]
 };
 </script>
 

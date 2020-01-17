@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>9 Fox</title>
 </head>
+
 <body>
     <div id="app"></div>
-
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v5.0"></script>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '578797122673780',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v5.0'
+            })
+        };
+    </script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./src/main.js"></script>
 </body>
+
 </html>
