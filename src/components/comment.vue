@@ -1,12 +1,7 @@
 <template>
   <b-container fluid style="margin-top: 20px;">
     <b-row align-h="center">
-        <div class="fb-share-button" 
-        v-bind:data-href="postImage" 
-        data-layout="button" data-size="large">
-        <a target="_blank" 
-        :href="`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstorage.googleapis.com%2Fninefox-data%2F${postImage.split('/')[3]}&amp;src=sdkpreparse`" 
-        class="fb-xfbml-parse-ignore">Share</a></div>
+        <a :href="twitterImg" class="twitter-share-button" data-size="large" data-text="Share this with your friend!!" data-hashtags="9fox" data-show-count="false">Tweet</a>
     </b-row>
     <hr class="my-4">
     <postcomment v-on:uploadcomment="userComment($event)"></postcomment>
@@ -47,6 +42,11 @@ export default {
         return {
             commentlist:[],
             postImage: this.data.image
+        }
+    },
+    computed:{
+        twitterImg(){
+            return 'https://twitter.com/share?ref_src=' + this.postImage
         }
     },
     methods:{

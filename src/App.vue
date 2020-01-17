@@ -9,7 +9,7 @@
         </b-modal>
           <MainCard v-for="(item, key) in allpostlist" :key="key" :data="item" v-on:selectedPost="showPost($event)"></MainCard>
       </b-row>
-      <b-row v-else>
+      <b-row v-else align-h="center">
           <button v-on:click="clearSelected">back</button>
           <MainCard :data="postselected"></MainCard>
           <Comment :data="postselected"></Comment>
