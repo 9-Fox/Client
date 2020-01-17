@@ -1,7 +1,12 @@
 <template>
   <b-container fluid style="margin-top: 20px;">
     <b-row align-h="center">
-        <b-button variant="outline-primary" style="margin-top:10px;">Share to Twitter</b-button>
+        <div class="fb-share-button" 
+        v-bind:data-href="postImage" 
+        data-layout="button" data-size="large">
+        <a target="_blank" 
+        :href="`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstorage.googleapis.com%2Fninefox-data%2F${postImage.split('/')[3]}&amp;src=sdkpreparse`" 
+        class="fb-xfbml-parse-ignore">Share</a></div>
     </b-row>
     <hr class="my-4">
     <postcomment v-on:uploadcomment="userComment($event)"></postcomment>
@@ -21,6 +26,7 @@ export default {
     },
     props: ['data'],
     created(){
+        console.log(this.data, 'ini apa')
         let postId = this.data._id
         axios({
             method: 'get',
@@ -39,7 +45,8 @@ export default {
     },
     data() {
         return {
-            commentlist:[]
+            commentlist:[],
+            postImage: this.data.image
         }
     },
     methods:{
@@ -58,7 +65,7 @@ export default {
             .then(({data})=>{
                 return axios({
                     method: 'get',
-                    url: 'http://localhost:3000/comments',
+                    url: `http://localhost:3000/comments/${postId}`,
                     headers:{
                         token: ''
                     }
