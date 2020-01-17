@@ -1,9 +1,13 @@
 
 <template>
-  <div >
+  <div>
     <b-container class="bv-example-row mb-3">
       <b-row cols="2" align-h="around">
-          <MainCard v-for="(item, key) in sample" :key="key" :data="item"></MainCard>
+        <b-button v-b-modal.modal-1>Launch demo modal</b-button>
+        <b-modal id="modal-1" title="BootstrapVue">
+          <UploadForm></UploadForm>
+        </b-modal>
+        <!-- <MainCard v-for="(item, key) in sample" :key="key" :data="item"></MainCard> -->
       </b-row>
       <b-row></b-row>
     </b-container>
@@ -11,46 +15,49 @@
 </template>
 
 <script>
-import Comment from "./components/comment"
+import Comment from "./components/comment";
 import MainCard from "./components/MainCard";
+import UploadForm from "./components/uploadForm";
 export default {
   name: "App",
   components: {
-    MainCard
+    MainCard,
+    UploadForm
   },
-  data(){
+  data() {
     return {
       sample: [
         {
-        title: 'Daun',
-        Like: 1,
-      gambur: "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg"
-
+          title: "Daun",
+          Like: 1,
+          gambur:
+            "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg"
         },
         {
-        title: 'Anjing Lagi Lari, Ini Lucu ga??',
-        Like: 5,
-      gambur: "https://www.animatedimages.org/data/media/202/animated-dog-image-0175.gif"
+          title: "Anjing Lagi Lari, Ini Lucu ga??",
+          Like: 5,
+          gambur:
+            "https://www.animatedimages.org/data/media/202/animated-dog-image-0175.gif"
         },
         {
-        title: 'Gatau Mau bikin Judul APa',
-        Like: 12,
-        gambur: "https://si.wsj.net/public/resources/images/JR-AA461B_IFVOL_P_20191031165108.jpg"
-
+          title: "Gatau Mau bikin Judul APa",
+          Like: 12,
+          gambur:
+            "https://si.wsj.net/public/resources/images/JR-AA461B_IFVOL_P_20191031165108.jpg"
         },
         {
-        title: 'Entah apa ini',
-        Like: 19,
-      gambur: "https://www.animatedimages.org/data/media/140/animated-love-image-0187.gif"
-
+          title: "Entah apa ini",
+          Like: 19,
+          gambur:
+            "https://www.animatedimages.org/data/media/140/animated-love-image-0187.gif"
         }
       ]
-    }
+    };
   },
-  methods:{
-    printSample(payload){
-      console.log('masuk ga?')
-      this.sample = payload
+  methods: {
+    printSample(payload) {
+      console.log("masuk ga?");
+      this.sample = payload;
     }
   }
 };
