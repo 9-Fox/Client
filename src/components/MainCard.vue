@@ -20,6 +20,7 @@
     <span class="spanduk h1 mb-2">
       <b-icon icon="cursor" variant="dark"></b-icon>
     </span>
+    <Comment :data="postdata"></Comment>
   </div>
 </template>
 
