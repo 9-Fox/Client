@@ -50,7 +50,7 @@ export default {
             text1: this.text1,
             text2: this.text2
           },
-          header:{"Access-Control-Allow-Origin" : "http://localhost:3333"}
+          header:{"Access-Control-Allow-Origin" : "http://localhost:8080"}
         })
         .then(({ data }) => {
           console.log(data);
