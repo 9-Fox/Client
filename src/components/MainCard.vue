@@ -20,6 +20,7 @@
     <span class="spanduk h1 mb-2">
       <b-icon icon="cursor" variant="dark"></b-icon>
     </span>
+    <Comment :data="postdata"></Comment>
   </div>
 </template>
 
@@ -28,11 +29,21 @@ export default {
   nmae: "MainCard",
   data() {
     return {
+      postdata: null,
       sample: "This is a sample text",
-      gambur: "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg"
+      gambur: "https://storage.googleapis.com/ninefox-data/1579229484627-Screenshot from 2019-11-21 16-15-23.png"
     };
   },
   methods: {
+    clickCard(){
+      axios({
+        method: 'get',
+        url: url
+      })
+      .then(({data})=>{
+        this.postdata = data
+      })
+    },
       sending(){
           this.$emit('send-sample', this.sample)
           console.log(this.sample)
