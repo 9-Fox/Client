@@ -36,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/9-Fox/Client/issues"
   },
-  "homepage": "https://github.com/9-Fox/Client#readme"
+  "homepage": "https://github.com/9-Fox/Client#readme",
+  "posthtml": {
+    "recognizeSelfClosing": true
+  }
 }

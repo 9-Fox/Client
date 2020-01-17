@@ -1,5 +1,7 @@
 
 <template>
+  <div id="comment-section">
+      <Comment :data="postData"></Comment>
   <div >
     <b-container class="bv-example-row mb-3">
       <b-row cols="2" align-h="around">
@@ -62,4 +64,4 @@ export default {
   flex-direction: row;
   justify-content: space-around;
 }
-</style>>
+</style>
