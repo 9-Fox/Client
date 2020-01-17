@@ -1,13 +1,13 @@
 <template>
   <b-container fluid style="margin-top: 20px;">
-    <post></post>
+    <post :data="user"></post>
     <b-row align-h="center">
-        <b-button variant="outline-primary">Share to Twitter</b-button>
+        <b-button variant="outline-primary" style="margin-top:10px;">Share to Twitter</b-button>
     </b-row>
     <hr class="my-4">
-    <postcomment></postcomment>
+    <postcomment v-on:upload="userComment($event)" :data="user"></postcomment>
     <hr class="my-4">
-    <usercomments></usercomments>
+    <usercomments v-for="(item, index) in commentlist" :key="index" :data="item"></usercomments>
   </b-container>
 </template>
 
@@ -24,7 +24,30 @@ export default {
     },
     data() {
         return {
-            
+            commentlist:[
+                {id: 1,name: 'serafim', comment:'lalalalalalla'},
+                {id: 2,name: 'samuel', comment: 'aku sangat bahagia hari ini'},
+                {id: 3,name: 'patra', comment: 'triliililililliliili'},
+                {id: 4,name: 'samuel', comment: 'aku sangat bahagia hari ini'},
+                {id: 5,name: 'patra', comment: 'triliililililliliili'},
+                {id: 2,name: 'samuel', comment: 'aku sangat bahagia hari ini'},
+                {id: 3,name: 'patra', comment: 'triliililililliliili'}
+                ],
+            usercomment: '',//ngetest aja
+            user: {
+                id: 1,
+                username: 'serafim',
+                caption: 'hehehehehe lucu banget',
+                userpicture: 'picture',
+                usermeme: 'meme'
+                }
+        }
+    },
+    methods:{
+        userComment(v){
+            this.usercomment = v
+            //BERHASIL EMIT
+            console.log(this.usercomment)
         }
     }
 }
