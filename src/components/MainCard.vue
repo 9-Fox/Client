@@ -1,13 +1,13 @@
 <template>
-  <div class="m-2">
+  <div class="m-2" v-on:click="selectPost">
       <h3>{{data.title}}</h3>
     <b-card
       overlay
-      :img-src="data.gambur"
+      :img-src="data.image"
       img-alt="Card Image"
       text-variant="white"
     ></b-card>
-    <p>{{data.Like}} Like</p>
+    <p>{{data.likes}} Like</p>
     <span class="spanduk h1 mb-2 ">
       <b-icon icon="heart-fill" variant="danger"></b-icon>
     </span>
@@ -26,24 +26,19 @@
 
 <script>
 export default {
-  nmae: "MainCard",
+  name: "MainCard",
+  props: ['data'],
   data() {
     return {
-      postdata: null,
-      sample: "This is a sample text",
-      gambur: "https://storage.googleapis.com/ninefox-data/1579229484627-Screenshot from 2019-11-21 16-15-23.png"
     };
   },
+  created(){
+    console.log(this.data)
+  },
   methods: {
-    clickCard(){
-      axios({
-        method: 'get',
-        url: url
-      })
-      .then(({data})=>{
-        this.postdata = data
-      })
-    },
+      selectPost(){
+        this.$emit('selectedPost', this.data._id)
+      },
       sending(){
           this.$emit('send-sample', this.sample)
           console.log(this.sample)
