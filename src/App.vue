@@ -1,6 +1,7 @@
 
 <template>
-  <div id="comment-section">
+    <Iframe></Iframe>
+  <!-- <div id="comment-section">
       <Comment :data="postData"></Comment>
   <div >
     <b-container class="bv-example-row mb-3">
@@ -10,15 +11,19 @@
       <b-row></b-row>
     </b-container>
   </div>
+  </div> -->
 </template>
 
 <script>
 import Comment from "./components/comment"
 import MainCard from "./components/MainCard";
+import Iframe from './components/Iframe';
+
 export default {
   name: "App",
   components: {
-    MainCard
+    MainCard,
+    Iframe
   },
   data(){
     return {
