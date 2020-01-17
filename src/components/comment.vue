@@ -20,25 +20,26 @@ export default {
         postcomment
     },
     props: ['data'],
+    created(){
+        let postId = this.data._id
+        axios({
+            method: 'get',
+            url: `http://localhost:3000/comments/${postId}`,
+            headers: {
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjEwZmUzZDhkYWU0MGY1Njk1ODQ1ZSIsImlhdCI6MTU3OTIzNzA3M30.aKMVkoYAWW-9htyf9wlxtRiW2phEe3Gm6_1x9hFjhsk"
+            }
+        })
+        .then(({data})=>{
+            console.log(data)
+            this.commentlist = data
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },
     data() {
         return {
-            commentlist:[
-                {id: 1,name: 'serafim', comment:'lalalalalalla'},
-                {id: 2,name: 'samuel', comment: 'aku sangat bahagia hari ini'},
-                {id: 3,name: 'patra', comment: 'triliililililliliili'},
-                {id: 4,name: 'samuel', comment: 'aku sangat bahagia hari ini'},
-                {id: 5,name: 'patra', comment: 'triliililililliliili'},
-                {id: 2,name: 'samuel', comment: 'aku sangat bahagia hari ini'},
-                {id: 3,name: 'patra', comment: 'triliililililliliili'}
-                ],
-            usercomment: '',//ngetest aja
-            user: {
-                id: 1,
-                username: 'serafim',
-                caption: 'hehehehehe lucu banget',
-                userpicture: 'picture',
-                usermeme: 'meme'
-                }
+            commentlist:[]
         }
     },
     methods:{
@@ -55,7 +56,17 @@ export default {
                 }
             })
             .then(({data})=>{
-                console.log(data, 'comment created')
+                return axios({
+                    method: 'get',
+                    url: 'http://localhost:3000/comments',
+                    headers:{
+                        token: ''
+                    }
+                })
+            })
+            .then(({data})=>{
+                console.log(data)
+                this.commentlist = data
             })
             .catch(err=>{
                 console.log(err)
