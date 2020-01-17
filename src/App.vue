@@ -1,10 +1,5 @@
 
 <template>
-  <div id="comment-section">
-      <Comment :data="postData"></Comment>
-=======
-=======
->>>>>>> afccbb22a6d208c02eafe132e291e8c06fb4448e
   <div >
     <b-container class="bv-example-row mb-3">
       <b-row cols="2" align-h="around">
@@ -17,23 +12,6 @@
 
 <script>
 import Comment from "./components/comment"
-export default {
-name: "App",
-components:{
-    Comment
-},
-data(){
-  return{
-    postData: ''
-  }
-},
-methods:{
-  onclickCard(){
-    //axio
-    // this.postData = //data yang diambil
-  }
-}
-}
 import MainCard from "./components/MainCard";
 export default {
   name: "App",
