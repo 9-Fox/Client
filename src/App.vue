@@ -1,6 +1,6 @@
 <template>
   <div id="comment-section">
-      <Comment></Comment>
+      <Comment :data="postData"></Comment>
   </div>
 </template>
 
@@ -10,6 +10,17 @@ export default {
 name: "App",
 components:{
     Comment
+},
+data(){
+  return{
+    postData: ''
+  }
+},
+methods:{
+  onclickCard(){
+    //axio
+    // this.postData = //data yang diambil
+  }
 }
 }
 </script>
