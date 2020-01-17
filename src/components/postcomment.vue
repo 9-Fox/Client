@@ -1,5 +1,5 @@
 <template>
-  <b-row align-h="center" sticky-header :items="items">
+  <b-row align-h="center">
             <b-col cols="1">
                 <b-img v-bind="mainProps" rounded="circle" thumbnail fluid src="https://picsum.photos/250/250/?image=54" alt="Image 1"></b-img>
             </b-col>
@@ -29,7 +29,7 @@
     },
     methods:{
         uploadPost(){
-            this.$emit('upload', this.comment)
+            this.$emit('uploadcomment', this.comment)
         }
     }
 }

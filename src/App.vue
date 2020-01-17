@@ -1,75 +1,57 @@
 
 <template>
-  <div id="comment-section">
-      <Comment :data="postData"></Comment>
-  <div >
     <b-container class="bv-example-row mb-3">
-      <b-row cols="2" align-h="around">
-          <MainCard v-for="(item, key) in sample" :key="key" :data="item"></MainCard>
+      <b-row cols="2" align-h="around" v-if="!postselected">
+          <MainCard v-for="(item, key) in allpostlist" :key="key" :data="item" v-on:selectedPost="showPost($event)"></MainCard>
       </b-row>
-      <b-row></b-row>
+      <b-row v-else>
+          <button v-on:click="clearSelected">back</button>
+          <MainCard :data="postselected"></MainCard>
+          <Comment :data="postselected"></Comment>
+      </b-row>
     </b-container>
-  </div>
 </template>
 
 <script>
 import Comment from "./components/comment"
-export default {
-name: "App",
-components:{
-    Comment
-},
-data(){
-  return{
-    postData: ''
-  }
-},
-methods:{
-  onclickCard(){
-    //axio
-    // this.postData = //data yang diambil
-  }
-}
-}
 import MainCard from "./components/MainCard";
 export default {
   name: "App",
   components: {
-    MainCard
+    MainCard,
+    Comment
+  },
+  created(){
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/posts'
+    })
+    .then(({data})=>{
+      this.allpostlist = data
+      // console.log(this.allpostlist)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
   },
   data(){
     return {
-      sample: [
-        {
-        title: 'Daun',
-        Like: 1,
-      gambur: "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg"
-
-        },
-        {
-        title: 'Anjing Lagi Lari, Ini Lucu ga??',
-        Like: 5,
-      gambur: "https://www.animatedimages.org/data/media/202/animated-dog-image-0175.gif"
-        },
-        {
-        title: 'Gatau Mau bikin Judul APa',
-        Like: 12,
-        gambur: "https://si.wsj.net/public/resources/images/JR-AA461B_IFVOL_P_20191031165108.jpg"
-
-        },
-        {
-        title: 'Entah apa ini',
-        Like: 19,
-      gambur: "https://www.animatedimages.org/data/media/140/animated-love-image-0187.gif"
-
-        }
-      ]
+      allpostlist: [],
+      postselected: null
     }
   },
   methods:{
-    printSample(payload){
-      console.log('masuk ga?')
-      this.sample = payload
+    clearSelected(){
+      this.postselected = null
+    },
+    showPost(id){
+      for(let i =0; i<this.allpostlist.length; i++){
+        // console.log('masuk loop')
+        let post = this.allpostlist[i]
+        if(post._id == id){
+          this.postselected = post
+        }
+      }
     }
   }
 };
