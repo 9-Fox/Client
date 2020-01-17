@@ -1,7 +1,5 @@
 
 <template>
-<<<<<<< HEAD
-<<<<<<< HEAD
   <div id="comment-section">
       <Comment :data="postData"></Comment>
 =======
@@ -14,16 +12,10 @@
       </b-row>
       <b-row></b-row>
     </b-container>
-<<<<<<< HEAD
->>>>>>> tampilannya udah
-=======
->>>>>>> afccbb22a6d208c02eafe132e291e8c06fb4448e
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-<<<<<<< HEAD
 import Comment from "./components/comment"
 export default {
 name: "App",
@@ -42,13 +34,8 @@ methods:{
   }
 }
 }
-=======
 import MainCard from "./components/MainCard";
 export default {
-=======
-import MainCard from "./components/MainCard";
-export default {
->>>>>>> afccbb22a6d208c02eafe132e291e8c06fb4448e
   name: "App",
   components: {
     MainCard
@@ -89,10 +76,6 @@ export default {
     }
   }
 };
-<<<<<<< HEAD
->>>>>>> tampilannya udah
-=======
->>>>>>> afccbb22a6d208c02eafe132e291e8c06fb4448e
 </script>
     
 <style scoped>
