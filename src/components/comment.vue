@@ -22,6 +22,7 @@ export default {
         postcomment,
         post
     },
+    props: ['data'],
     data() {
         return {
             commentlist:[
